@@ -23,7 +23,13 @@ A typical 15-document file is read in about 20 seconds.
 - **Schengen application forms filled in with a PDF editor** are read field by field: name, passport, dates, main destination and so on.
 - **Word files** are read directly.
 
-Nothing is uploaded anywhere. The only download is a one-time OCR language file (English), which is already saved in `.ocr-cache`.
+Documents and extracted fields stay in your browser. The app fetches exchange rates and sends sanitized technical errors and sampled page-load timing to Sentry. Error messages, document filenames, uploaded files, extracted values, console output and session recordings are not included in monitoring.
+
+## Monitoring
+
+Sentry project: `mg-review/mg-assistant`. The SDK is self-hosted with the app and starts before the review code. Reports retain error type and application file/line locations; potentially sensitive error messages are replaced with a generic operation label. Page timing is sampled at 10% in production. Session Replay, logs, metrics, breadcrumbs, HTTP body capture and user identity collection are disabled.
+
+`lib/monitoring-privacy.mjs` allowlists outgoing event fields and is covered by privacy regression tests. The Sentry DSN in the browser entry is a public ingestion key, not an account credential. Releases use `VERCEL_GIT_COMMIT_SHA` (or the local Git revision), and environments use `VERCEL_ENV`. Application scripts and the monitoring bundle remain unminified so stack locations are readable without a private source-map token. Monitoring failure does not prevent document review.
 
 ## What it checks
 

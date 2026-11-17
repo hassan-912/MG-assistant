@@ -3,9 +3,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { APP_FILES, VENDOR } from '../lib/site.mjs';
+import { buildMonitoring } from './build-monitoring.mjs';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = path.join(root, 'dist');
+await buildMonitoring();
 fs.rmSync(out, { recursive: true, force: true });
 
 const copy = (from, to) => {

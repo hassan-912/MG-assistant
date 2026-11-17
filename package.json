@@ -6,10 +6,12 @@
   "scripts": {
     "start": "node server.mjs",
     "build": "node tools/build.mjs",
-    "test": "node tests/run-tests.js && node tests/parse-tests.mjs"
+    "test": "node tests/run-tests.js && node tests/parse-tests.mjs && node --test tests/monitoring-tests.mjs"
   },
   "dependencies": {
+    "@sentry/browser": "11.13.0",
     "@tesseract.js-data/eng": "^1.0.0",
+    "esbuild": "0.28.2",
     "pdfjs-dist": "^4.10.38",
     "tesseract.js": "^5.1.1"
   },

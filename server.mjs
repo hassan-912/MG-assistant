@@ -6,6 +6,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { APP_FILES, vendorSource } from './lib/site.mjs';
+import { buildMonitoring } from './tools/build-monitoring.mjs';
+
+await buildMonitoring();
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT) || 5178;
@@ -71,5 +74,5 @@ server.on('error', (e) => {
 });
 server.listen(PORT, '127.0.0.1', () => {
   console.log('Visa File Review running at http://localhost:' + PORT);
-  console.log('Documents are read in your browser — nothing is uploaded anywhere.');
+  console.log('Documents stay in your browser. Sanitized technical errors and page timing are sent to Sentry.');
 });

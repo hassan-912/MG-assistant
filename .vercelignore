@@ -8,3 +8,4 @@ dist/
 **/_e2e*/
 **/_e2e*.json
 review-out.json
+js/monitoring.bundle.js

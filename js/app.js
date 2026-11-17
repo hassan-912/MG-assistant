@@ -42,7 +42,7 @@
     } catch (e) { /* storage full or blocked — review still works for this session */ }
   }
 
-  /* ---------------- exchange rates (only network call; no client data is sent) ---------------- */
+  /* ---------------- exchange rates (no client data is sent) ---------------- */
   async function loadRates() {
     const tries = ['api/rates', 'https://open.er-api.com/v6/latest/EUR'];
     for (const url of tries) {
@@ -108,6 +108,7 @@
       f.status = 'done';
     } catch (e) {
       console.error(e);
+      V.monitoring?.capture(e, 'document_read');
       f.status = 'error';
       f.error = e.message || String(e);
     }
@@ -164,6 +165,7 @@
       lastReport = V.engine.run(lastCase);
     } catch (e) {
       console.error(e);
+      V.monitoring?.capture(e, 'review');
       $('#report').innerHTML = '<div class="card pad"><b>Review error:</b> ' + esc(e.message) + '</div>';
       return;
     }

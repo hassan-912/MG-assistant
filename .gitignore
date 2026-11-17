@@ -7,3 +7,4 @@ review-out.json
 _e2e*/
 _e2e*.json
 .claude/
+js/monitoring.bundle.js
