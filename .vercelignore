@@ -1,0 +1,10 @@
+.git/
+.claude/
+.ocr-cache/
+.env
+.env.*
+node_modules/
+dist/
+**/_e2e*/
+**/_e2e*.json
+review-out.json

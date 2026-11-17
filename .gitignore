@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.ocr-cache/
+.vercel/
+review-out.json
+_e2e*/
+_e2e*.json
+.claude/

@@ -1,0 +1,22 @@
+{
+  "name": "visa-file-review",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Visa file review for Schengen and USA files — reads documents in the browser (PDF + OCR) and checks every document against the others.",
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "node tools/build.mjs",
+    "test": "node tests/run-tests.js && node tests/parse-tests.mjs"
+  },
+  "dependencies": {
+    "@tesseract.js-data/eng": "^1.0.0",
+    "pdfjs-dist": "^4.10.38",
+    "tesseract.js": "^5.1.1"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^0.1.65"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
